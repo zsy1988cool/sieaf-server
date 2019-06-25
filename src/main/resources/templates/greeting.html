@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/1.css}" rel="stylesheet"/>
+</head>
+<body>
+<p th:text="'Hello, ' + ${title}" /><br/>
+
+<script src='../static/js/jquery/jquery-3.2.1.js' th:src="@{/js/jquery/jquery-3.2.1.js}"></script>
+<script>
+    $(function(){
+        alert("page load finish.");
+
+        $.ajax({
+            url:"/seaf/getToken",
+            type:"POST",
+            dataType:"json",
+            async:false,
+            contentType:"application/json;charset=utf-8",
+            data: JSON.stringify({"password":"id0003","userName":"name0003","mac":"77"}),
+            success:function(message){
+                debugger
+                alert(message.data+"  "+message.code);
+            },
+            error:function(message){
+                $("request-process-patent").html("fail to post");
+            }
+        });
+    });
+</script>
+</body>
+</html>
