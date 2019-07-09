@@ -1,6 +1,6 @@
 package com.ylz.seaf.web;
 
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+//import com.sun.org.apache.xml.internal.security.utils.Base64;
 import com.ylz.seaf.core.*;
 import org.springframework.web.bind.annotation.*;
 import sun.misc.BASE64Decoder;
@@ -208,14 +208,28 @@ public class SeafController {
             data.put("akb020", "org001");
             mod.setData(data);
             status = false;
+
+            System.out.println("获取登录到的参数");
+            System.out.println(param);
         } else if("F04.13.01.14".equals(funId)) {
             //获取申报状态
-            mod.setFlag(status ? "1" : "0");
+            mod.setFlag("1");
             mod.setCause("");
+
+            Map<String, String> data = new HashMap<>();
+            data.put("bae451", "0");
+            mod.setData(data);
+
+
+            System.out.println("获取申报状态到的参数");
+            System.out.println(param);
         } else if("F04.13.01.15".equals(funId)) {
             // 进行申报
             mod.setFlag("1");
+            mod.setCause("申报成功，登记号为:00xxx");
             status = true;
+
+            System.out.println("获取申报到的参数");
             System.out.println(param);
         }
         return mod;

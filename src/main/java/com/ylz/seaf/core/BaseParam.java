@@ -45,6 +45,9 @@ public class BaseParam {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         Set<String> keys = data.keySet();
+        builder.append("用户名").append("==>").append(getUsr()).append("\n");
+        builder.append("密码").append("==>").append(getPwd()).append("\n");
+        builder.append("功能编号").append("==>").append(getFunid()).append("\n");
         for(String key : keys) {
             String value = data.get(key);
 
